@@ -1,0 +1,15 @@
+
+    <div class="left_content">
+      <div class="crumb_nav"> <a href="index.htm">home</a> &gt;&gt; category name </div>
+      <div class="title"><span class="title_icon"><img src="__PUBLIC__images/bullet1.gif" alt="" title="" /></span>Category jewels</div>
+      <div class="new_products">
+      <foreach name='list' item = 'a'>
+        <div class="new_prod_box"> <a href="#">{$a.name}</a>
+          <div class="new_prod_bg"> <a href="{:U('product/categoryInfo')}&id={$a.id}"><img src="{$a.thumb}" width="120" height="110" alt="" title="" class="thumb" border="0" /></a> </div>
+        </div>
+       </foreach> 
+        <div class="pagination"> {$page}</div>
+      </div>
+      <div class="clear"></div>
+    </div>
+    <!--end of left content-->

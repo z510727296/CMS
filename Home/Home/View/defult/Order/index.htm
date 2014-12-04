@@ -1,0 +1,31 @@
+ <div class="left_content">
+  <div class="title"><span class="title_icon"><img src="__PUBLIC__images/bullet1.gif" alt="" title="" /></span>My Order</div>
+  <div class="feat_prod_box_details">
+    <table class="cart_table">
+      <tr class="cart_title">
+        <td>order_number</td>
+        <td>pic</td>
+        <td>price</td>
+        <td>status</td>
+        <td>operation</td>
+      </tr>
+       <tr>
+       	<td>{$order.number}</td>
+        	<td>
+         	<foreach name="order['orderinfo']" item="o">
+         		<img src="{$o.thumb}" width="40" height="50">
+         	</foreach>
+        	</td>
+       	<td>{$order.price}</td>
+       	<td>{$order.status}</td>
+       	<td><a href="{:U('order/del')}&id={$order.id}" class="delete">delete</a>&<a href="{:U('order/pay')}&id={$order.id}">payment</a></td>
+       </tr>
+      <tr>
+        <td colspan="4" class="cart_total"><span class="red">TOTAL:</span></td>
+        <td>$<span  id="cart_total">{$order_price}</span></td>
+      </tr>
+    </table>
+    <a href="{:U('ordel/del')}" class="continue">&lt; continue</a> <a href="{:U('order/pay')}" class="checkout">checkout &gt;</a> </div>
+  <div class="clear"></div>
+</div>
+<!--end of left content-->

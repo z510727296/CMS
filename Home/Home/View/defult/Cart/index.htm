@@ -1,0 +1,83 @@
+ <div class="left_content">
+      <div class="title"><span class="title_icon"><img src="__PUBLIC__images/bullet1.gif" alt="" title="" /></span>My cart</div>
+      <div class="feat_prod_box_details">
+        <table class="cart_table" id="cart_table">
+          <tr class="cart_title">
+            <td>Item pic</td>
+            <td>Jewel name</td>
+            <td>Unit price</td>
+            <td>Qty</td>
+            <td>Total</td>
+            <td>delete</td>
+          </tr>
+          
+          <foreach name='cart' item='info'>
+	          <tr id="cart_{$info.id}">
+	            <td><a href="{$info.thumb}"><img src="{$info.thumb}" width='50' height="50" alt="" title="" border="0" class="cart_thumb" /></a></td>
+	            <td>{$info.name}</td>
+	            <td>$<span id="price_{$info.id}">{$info.wd_price}</span></td>
+	            <td><input type='text' cart_id="{$info.id}" value="{$info.cont}" size="4" name='cont' class="cont"></td>
+	            <td>$<span id="total_{$info.id}" class="total">{$info.total}</span></td>
+	            <td><a href="javascript:viod(0);"  cart_id="{$info.id}" class="delete">delete</a></td>
+	          </tr>
+         </foreach>
+  
+          <tr>
+            <td colspan="4" class="cart_total"><span class="red">TOTAL:</span></td>
+            <td>$<span  id="cart_total">{$cart_total}</span></td>
+          </tr>
+        </table>
+        <a href="{:U('cart/del')}" class="continue">&lt; continue</a> <a href="{:U('order/add')}" class="checkout">checkout &gt;</a> </div>
+      <div class="clear"></div>
+    </div>
+    <!--end of left content-->
+  <script>
+  	$(function(){
+  		/**
+  		* 购物车价格计算
+  		*/
+  		$('.cont').change(function(){
+  			var id = $(this).attr('cart_id');
+  			var cont = $(this).val();
+  			var price = $('#price_'+id).html();
+  			var total =  price * cont;
+  			$.ajax({
+  			   type: "POST",
+  			   url: "{:U('cart/edit')}",
+  			   data:{
+  				 'id':id,
+  				 'cont':cont,
+  			   },
+  			   success: function(msg){
+  				 	var cart_total=0;
+	  	  			$('#total_'+id).html(total);
+					for(i=0;i<$('#cart_table .total').length;i++)
+					{
+						cart_total += Number($('#cart_table .total').eq(i).html());
+					}
+					$('#cart_total').html(cart_total);
+  			   }
+  			});
+  		})
+  		
+  		$(".delete").click(function(){
+  			if(confirm('Are you sure?')){
+	  			var id = $(this).attr('cart_id');
+	  			var price = $('#total_'+id).html();
+	  			var cart_total = $('#cart_total').html();
+	  			$.ajax({
+	   			   type: "POST",
+	   			   url: "{:U('cart/del')}",
+	   			   data:{
+	   				 'id':id,
+	   			   },
+	   			   success: function(msg){
+						cart_total = cart_total - price;
+						$('#cart_total').html(cart_total);
+	 	  	  			$('#cart_'+id).remove();
+	   			   }
+	   			});
+  			}
+  		})
+  	})
+  </script>

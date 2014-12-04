@@ -1,0 +1,77 @@
+    <div class="left_content">
+      <div class="crumb_nav"> <a href="{:U('index/index')}">home</a> &gt;&gt;{$info.name} </div>
+      <div class="title"><span class="title_icon"><img src="__PUBLIC__images/bullet1.gif" alt="" title="" /></span>{$info.name}</div>
+      <div class="feat_prod_box_details">
+        <div class="prod_img"><a href="{:U(product/categoryInfo)}"><img src="{$info.thumb}" width='80' height="80" alt="" title="" border="0" /></a> <br />
+          <br />
+          <a href="__PUBLIC__images/big_pic.jpg" rel="lightbox"><img src="__PUBLIC__images/zoom.gif" alt="" title="" border="0" /></a> </div>
+        <div class="prod_det_box">
+          <div class="box_top"></div>
+          <form action="{:U('cart/cartnow')}" id="cartform" method="post">
+	          <div class="box_center">
+	            <div class="prod_title">{$info.name}</div>
+	            <p class="details">{$info.ms_info} </p>
+	            <div class="price"><strong>PRICE:</strong> <span class="red">${$info.wd_price}</span></div>
+	            <div>cont:<input size="4" value="1" name="cont" type="test"></div> 
+	            <input type="hidden" name='id' value="{$info.id}">
+	            <input type="hidden" name='name' value="{$info.name}">
+	            <input type="hidden" name='wd_price' value="{$info.wd_price}">
+	            <input type="hidden" name='thumb' value="{$info.thumb}">
+	            <a href="javascript:vido('0')" class="more"><img src="__PUBLIC__images/order_now.gif" id="sublimt" alt="" title="" border="0" /></a>
+	            <div class="clear"></div>
+	          </div>
+          </form>
+          <div class="box_bottom"></div>
+        </div>
+        <div class="clear"></div>
+      </div>
+      <div id="demo" class="demolayout">
+        <ul id="demo-nav" class="demolayout">
+          <li><a class="active" href="http://www.865171.cntab1">More details</a></li>
+          <li><a class="" href="http://www.865171.cntab2">Related books</a></li>
+        </ul>
+        <div class="tabs-container">
+          <div style="display: block;" class="tab" id="tab1">
+            <p class="more_details">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation. </p>
+            <ul class="list">
+              <li><a href="http://www.865171.cn">Lorem ipsum dolor sit amet, consectetur adipisicing elit</a></li>
+              <li><a href="http://www.865171.cn">Lorem ipsum dolor sit amet, consectetur adipisicing elit</a></li>
+              <li><a href="http://www.865171.cn">Lorem ipsum dolor sit amet, consectetur adipisicing elit</a></li>
+              <li><a href="http://www.865171.cn">Lorem ipsum dolor sit amet, consectetur adipisicing elit</a></li>
+            </ul>
+            <p class="more_details">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation. </p>
+          </div>
+          <div style="display: none;" class="tab" id="tab2">
+            <div class="new_prod_box"> <a href="details.htm">product name</a>
+              <div class="new_prod_bg"> <a href="details.htm"><img src="__PUBLIC__images/thumb1.gif" alt="" title="" class="thumb" border="0" /></a> </div>
+            </div>
+            <div class="new_prod_box"> <a href="details.htm">product name</a>
+              <div class="new_prod_bg"> <a href="details.htm"><img src="__PUBLIC__images/thumb2.gif" alt="" title="" class="thumb" border="0" /></a> </div>
+            </div>
+            <div class="new_prod_box"> <a href="details.htm">product name</a>
+              <div class="new_prod_bg"> <a href="details.htm"><img src="__PUBLIC__images/thumb3.gif" alt="" title="" class="thumb" border="0" /></a> </div>
+            </div>
+            <div class="new_prod_box"> <a href="details.htm">product name</a>
+              <div class="new_prod_bg"> <a href="details.htm"><img src="__PUBLIC__images/thumb1.gif" alt="" title="" class="thumb" border="0" /></a> </div>
+            </div>
+            <div class="new_prod_box"> <a href="details.htm">product name</a>
+              <div class="new_prod_bg"> <a href="details.htm"><img src="__PUBLIC__images/thumb2.gif" alt="" title="" class="thumb" border="0" /></a> </div>
+            </div>
+            <div class="new_prod_box"> <a href="details.htm">product name</a>
+              <div class="new_prod_bg"> <a href="details.htm"><img src="__PUBLIC__images/thumb3.gif" alt="" title="" class="thumb" border="0" /></a> </div>
+            </div>
+            <div class="clear"></div>
+          </div>
+        </div>
+      </div>
+      <div class="clear"></div>
+    </div>
+    <!--end of left content-->
+    <script>
+    	$(function(){
+    		$('#sublimt').click(function(){
+    			$('#cartform').submit();
+    			
+    		})
+    	})
+    </script>
